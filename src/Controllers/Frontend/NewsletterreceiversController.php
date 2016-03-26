@@ -33,7 +33,7 @@ class NewsletterreceiversController extends Controller {
 			if (request()->ajax()) 
 			{
 	     		return [
-	     			'success' => false
+	     			'success' => false,
 	     			'reason' => 'Please specify E-mail to receive newsletter'
 	     		];
 	     	}
