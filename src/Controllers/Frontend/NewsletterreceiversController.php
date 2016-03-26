@@ -33,6 +33,20 @@ class NewsletterreceiversController extends Controller {
 
 		Cookie::queue('has_newsletter', 1, 60*24*365);
 
+		$data = [
+			'receiver' => request()->get('email')
+		];
+
+		if ( config('sanatorium-newsletter.voucher_for_signup') )
+			$this->giveDiscountVoucher($user_id);
+		else
+			Event::fire('sanatorium.newsletter.new', ['object' => $data]);
+
+		return redirect()->back();
+	}
+
+	public function giveDiscountVoucher($user_id)
+	{
 		$receivers->create([
 			'email' => request()->get('email'),
 			'user_id' => $user_id
@@ -54,8 +68,6 @@ class NewsletterreceiversController extends Controller {
 		];
 
 		Event::fire('sanatorium.newsletter.new', ['object' => $data]);
-
-		return redirect()->back();
 	}
 
 	public function generateRandomUniqueString($length = 10)

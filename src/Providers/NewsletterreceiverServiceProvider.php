@@ -16,6 +16,8 @@ class NewsletterreceiverServiceProvider extends ServiceProvider {
 
 		// Subscribe the registered event handler
 		$this->app['events']->subscribe('sanatorium.newsletter.newsletterreceiver.handler.event');
+
+		$this->prepareResources();
 	}
 
 	/**
@@ -35,5 +37,22 @@ class NewsletterreceiverServiceProvider extends ServiceProvider {
 		// Register the validator
 		$this->bindIf('sanatorium.newsletter.newsletterreceiver.validator', 'Sanatorium\Newsletter\Validator\Newsletterreceiver\NewsletterreceiverValidator');
 	}
+
+
+    /**
+     * Prepare the package resources.
+     *
+     * @return void
+     */
+    protected function prepareResources()
+    {
+        $config = realpath(__DIR__.'/../../config/config.php');
+
+        $this->mergeConfigFrom($config, 'sanatorium-newsletter');
+
+        $this->publishes([
+            $config => config_path('sanatorium-newsletter.php'),
+        ], 'config');
+    }
 
 }
