@@ -32,10 +32,11 @@ class NewsletterreceiversController extends Controller {
 
 			if (request()->ajax()) 
 			{
-	     		return [
-	     			'success' => false,
-	     			'reason' => 'Please specify E-mail to receive newsletter'
-	     		];
+				$result = [
+					'success' => false,
+					'reason' => 'Please specify E-mail to receive newsletter',
+				];
+	     		return $result;
 	     	}
 
 			return redirect()->back()->withErrors(['noemail', 'Please specify E-mail to receive newsletter']);
