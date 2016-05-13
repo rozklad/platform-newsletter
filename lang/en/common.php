@@ -6,7 +6,13 @@ return [
 
 	'email' => [
 
-		'placeholder' => 'E-mail',
+		'placeholder' => 'Your e-mail address',
+
+	],
+
+	'actions' => [
+
+		'subscribe' => 'Subscribe',
 
 	]
 
