@@ -2,6 +2,12 @@
 
 return [
 
-	'subscribed' => 'You have been succesfully subscribed to newsletter',
+	'subscribed' => 'You are already subscribed to newsletter',
+
+    'subscribe' => [
+
+        'success' => 'You have been succesfully subscribed to newsletter'
+
+    ]
 
 ];

@@ -63,6 +63,8 @@ class NewsletterreceiversController extends Controller {
      		return ['success' => true];
      	}
 
+        $this->alerts->success(trans("sanatorium/newsletter::messages.subscribe.success"));
+
 		return redirect()->back();
 	}
 
